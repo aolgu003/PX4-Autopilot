@@ -1,0 +1,101 @@
+Loading /home/user/PX4-Autopilot/docs/assets/flight_log_analysis/plot_juggler/sample_log_boat_testing_2022-7-28-13-31-16.ulg …
+
+=================================================================
+  IMU SELECTION ANALYSIS
+=================================================================
+  Log file : /home/user/PX4-Autopilot/docs/assets/flight_log_analysis/plot_juggler/sample_log_boat_testing_2022-7-28-13-31-16.ulg
+  Saved to : /home/user/PX4-Autopilot/docs/assets/flight_log_analysis/plot_juggler/sample_log_boat_testing_2022-7-28-13-31-16_imu_selection.txt
+
+=================================================================
+  LOGGED PARAMETERS
+=================================================================
+
+  Selection mode
+  -------------------------------------------------------------
+  SENS_IMU_MODE           0           0=follow external sensor_selection, 1=internal voter publishes selection
+
+  Gyro calibration priorities  (0=disabled, 1–100 active, higher wins ties)
+  -------------------------------------------------------------
+  CAL_GYRO0_PRIO          50          Voting priority for gyro calibration slot 0
+  CAL_GYRO1_PRIO          50          Voting priority for gyro calibration slot 1
+  CAL_GYRO2_PRIO          (not in log)
+  CAL_GYRO3_PRIO          (not in log)
+
+  Accel calibration priorities  (matched to gyro slot; paired selection)
+  -------------------------------------------------------------
+  CAL_ACC0_PRIO           50          Voting priority for accel calibration slot 0
+  CAL_ACC1_PRIO           50          Voting priority for accel calibration slot 1
+  CAL_ACC2_PRIO           (not in log)
+  CAL_ACC3_PRIO           (not in log)
+
+  Publication rate
+  -------------------------------------------------------------
+  IMU_GYRO_RATEMAX        400         Max vehicle_angular_velocity publication rate (Hz); does not affect raw sensor rate
+
+  Low-pass filters
+  -------------------------------------------------------------
+  IMU_GYRO_CUTOFF         40          2nd-order Butterworth LPF cutoff for angular velocity sent to controllers (Hz)
+  IMU_DGYRO_CUTOFF        30          LPF cutoff for angular acceleration / D-term (Hz)
+
+  Static notch filters  (frequency=0 disables)
+  -------------------------------------------------------------
+  IMU_GYRO_NF0_FRQ        0           Static notch filter 0 centre frequency (Hz)
+  IMU_GYRO_NF0_BW         20          Static notch filter 0 bandwidth -3 dB (Hz)
+  IMU_GYRO_NF1_FRQ        0           Static notch filter 1 centre frequency (Hz)
+  IMU_GYRO_NF1_BW         20          Static notch filter 1 bandwidth -3 dB (Hz)
+
+  Dynamic notch filters
+  -------------------------------------------------------------
+  IMU_GYRO_DNF_EN         0           Dynamic notch enable bitmask (bit 0=ESC RPM, bit 1=onboard FFT)
+  IMU_GYRO_DNF_BW         15          Dynamic notch filter bandwidth (Hz)
+  IMU_GYRO_DNF_HMC        3           Number of harmonic notches tracked per motor
+  IMU_GYRO_DNF_MIN        (not in log)
+
+=================================================================
+  IMUs FOUND IN LOG
+=================================================================
+
+  Slot 0: gyro=0x003C000A  accel=0x003C000A  raw_rate=7994 Hz
+  Slot 1: gyro=0x0042000A  accel=0x0041000A  raw_rate=1997 Hz
+
+=================================================================
+  SELECTION TIMELINE
+=================================================================
+
+[  -0.278s]  Initial selection
+  Gyro:  0x003C000A  (slot 0)
+  Accel: 0x003C000A
+
+  Slot  Gyro device    Healthy   Priority   Inconsistency (rad/s)
+  ---------------------------------------------------------------
+  0     0x003C000A     yes       50         0.0017 ◀ selected
+  1     0x0042000A     yes       50         0.0017
+
+[   1.566s]  *** Selection changed ***
+  Gyro:  0x0042000A  (slot 1)
+  Accel: 0x0041000A
+
+  Slot  Gyro device    Healthy   Priority   Inconsistency (rad/s)
+  ---------------------------------------------------------------
+  0     0x003C000A     yes       50         0.0018
+  1     0x0042000A     yes       50         0.0018 ◀ selected
+
+  Deselected IMU (slot 0) at switch time: error_count=0, vibration=0.0057 rad/s, temp=38.7 °C
+
+  Reason(s):
+    • IMU slot 1 (0x0042000A) had higher confidence score than previous primary
+
+=================================================================
+  FINAL STATE
+=================================================================
+
+  Active gyro at end of log: 0x0042000A  (slot 1)
+
+  Final health state:
+  Slot  Gyro device    Healthy   Priority   Inconsistency (rad/s)
+  ---------------------------------------------------------------
+  0     0x003C000A     yes       50         0.0002
+  1     0x0042000A     yes       50         0.0002 ◀ selected
+
+  Total selection changes during flight: 1
+
